@@ -5,7 +5,6 @@ from myapp.models import Tweet, db
 
 bp_tweets=Blueprint("bp_tweets", __name__)
 
-
 @bp_tweets.route('/get_tweets', methods=['GET'])
 def getTweets():
     listTweets = []

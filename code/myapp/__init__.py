@@ -13,7 +13,7 @@ db = SQLAlchemy(app)
 
 from myapp.tweet_routes import bp_tweets
 
-app.register_blueprint(bp_tweets, url_prefix="/tweets")
+app.register_blueprint(bp_tweets)
 
 db.init_app(app)
 with app.app_context():
