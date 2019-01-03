@@ -18,12 +18,3 @@ currentUser=None
 myOperation_url=None
 myOperation_json=None
 myOperation_method=None
-
-
-@bp_playlist.route('/tweets', methods = ['GET'])
-def getPlaylists():
-    listPlaylists = []
-    for itPlaylist in Playlist.query.all():
-        listPlaylists.append(itPlaylist.toJSON)
-    return make_response(jsonify({"playlists":listPlaylists}), 200)
-
