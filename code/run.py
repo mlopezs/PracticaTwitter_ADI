@@ -12,9 +12,3 @@ import requests
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
-oauth = OAuth()
-mySession=None
-currentUser=None
-myOperation_url=None
-myOperation_json=None
-myOperation_method=None
