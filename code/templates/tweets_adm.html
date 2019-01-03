@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<main role="main" class="container">
+    <div method="get" class="my-3 p-3 bg-main-container rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0 text-title-container">Tweets operation</h6>
+    <label></label>
+    <form action="{{ url_for('filterByDateTweets') }}"  method=post>
+            <p>
+              <label class="text-bold-tweet" type="search">Init. Day: </label>
+              <input type=text name=tweetText size=40>
+            </p>
+            <p>
+                <label class="text-bold-tweet" type="search">Fin. Day: </label>
+                <input type=text name=tweetText size=40>
+                <input type=submit value="Filter">
+            </p>
+            </form>
+      
+          <form action="{{ url_for('listByWordTweets') }}"  method=post>
+            <p>
+                <label class="text-bold-tweet" type="search">Word: </label>
+                <input type=text name=idTweetDelete size=40>
+                <input type=submit value="Find"> 
+            </p>
+          </form>
+      
+          <form action="{{ url_for('showByZLikesTweets') }}"  method=post>
+            <p>
+                <label class="text-bold-tweet" type="search">Number of Z retweets: </label> 
+                <input type=text name=idRepostTweet size=40>
+                <input type=submit value="Find"> 
+            </p>
+          </form>     
+    </div>
+</main>
+
+{% endblock %}
