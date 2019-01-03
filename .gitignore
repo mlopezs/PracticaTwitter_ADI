@@ -1,3 +1,4 @@
-code/data/*
+code/data/twit/*
 virtualenv/
 *.pyc
+practica.conf
