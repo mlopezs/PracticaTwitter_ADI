@@ -1,3 +1,3 @@
-code/data/twit/*
+code/data/*
 virtualenv/
 *.pyc
