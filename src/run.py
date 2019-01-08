@@ -42,13 +42,19 @@ def collectTweets():
 def stopCollectTweets():
     global process
     if process is not None:
-        subprocess.Popen("kill " + process.pid)
+        subprocess.Popen("kill -9 " + process.pid)
         process = None
     return render_template('index.html')
 
 @app.route('/list_word', methods=['POST'])
 def listByWordTweets():
-    pass
+    if not request.json or not 'word' in request.json:
+        return make_response(jsonify({'error' : 'Bad Request'}), 400)
+
+    listaTweets = []
+    # Ejecutar cosas
+
+    return make_response(jsonify({'tweets' : listaTweets}), 200)
 
 @app.route('/show_likes', methods=['POST'])
 def showByYLikesTweets():
