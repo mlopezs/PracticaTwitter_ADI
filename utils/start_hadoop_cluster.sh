@@ -1,7 +1,8 @@
 #!/bin/bash
-#!/bin/bash
 
 hdfs namenode -format
-~/Programas/hadoop/sbin/start-yarn.sh && ~/Programas/hadoop/sbin/start-dfs.sh
-~/Programas/hadoop/sbin/mr-jobhistory-daemon.sh start historyserver
+$HADOOP_HOME/sbin/start-yarn.sh && $HADOOP_HOME/sbin/start-dfs.sh
+$HADOOP_HOME/sbin/mr-jobhistory-daemon.sh start historyserver
+hdfs dfs -mkdir -p /user/tweets-collect
+echo
 jps
