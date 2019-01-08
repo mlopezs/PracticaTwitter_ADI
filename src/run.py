@@ -5,7 +5,7 @@ from flask import Flask, request, redirect, url_for, flash, render_template, mak
 from flask_oauthlib.client import OAuth
 
 import requests
-
+import os
 import subprocess
 
 app = Flask(__name__)
@@ -52,8 +52,19 @@ def listByWordTweets():
         return make_response(jsonify({'error' : 'Bad Request'}), 400)
 
     listaTweets = []
-    # Ejecutar cosas
 
+    # ejecutar weas
+    os.system("pig -f scripts/pig_palabra.pig -p WORD={}".format(request.json['word']))
+    # copy to local
+    os.system("hdfs dfs -copyToLocal /user/storage/sol_palabra results/sol_palabra.txt")
+
+    file = open("results/sol_palabra.txt", 'r')
+    line = file.readline()
+
+    while line:
+        listaTweets.append(line)
+        line = file.readline()
+        
     return make_response(jsonify({'tweets' : listaTweets}), 200)
 
 @app.route('/show_likes', methods=['POST'])
