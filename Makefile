@@ -15,6 +15,6 @@ flume: hadoop
 	./$(DIRUTL)start_flume_collect.sh
 
 pig-test:
-	pig -f $(DIRPIG)pig_setup.pig -p PIG_HOME=$(PIG_HOME)
 	pig -f $(DIRPIG)pig_likes.pig -p LIKES=100
+	pig -f $(DIRPIG)pig_rts.pig -p RTS=20
 	pig -f $(DIRPIG)pig_palabra.pig -p WORD="internet"
