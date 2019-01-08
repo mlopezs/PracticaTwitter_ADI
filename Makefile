@@ -18,3 +18,6 @@ pig-test:
 	pig -f $(DIRPIG)pig_likes.pig -p LIKES=100
 	pig -f $(DIRPIG)pig_rts.pig -p RTS=20
 	pig -f $(DIRPIG)pig_palabra.pig -p WORD="internet"
+
+rm-logs:
+	find . -name "*.log" -type f -delete

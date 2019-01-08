@@ -1,18 +1,21 @@
 #!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
 
-# Alfonso Barragán Carmona
-# Marcos López Sobrino
-# Roberto Plaza Romero
-
 from flask import Flask, request, redirect, url_for, flash, render_template, make_response, jsonify
 from flask_oauthlib.client import OAuth
 
 import requests
 
+import subprocess
+
 app = Flask(__name__)
 app.config['DEBUG'] = True
 oauth = OAuth()
+
+SCRIPTS = '../scripts/'
+UTILS = '../utils/'
+
+process = None
 
 # Pagina principal
 @app.route('/')
@@ -28,24 +31,31 @@ def show_operations():
 
 @app.route('/collect', methods=['POST'])
 def collectTweets():
-    pass
+    global process
+    process = subprocess.Popen("sh " + UTILS + "start_flume_collect.sh")
+    print(process.pid)
+    return render_template('index.html')
+
+
 
 @app.route('/no_collect', methods=['POST'])
 def stopCollectTweets():
-    pass
-
-# Operaciones
-@app.route('/date_filter', methods=['POST'])
-def filterByDateTweets():
-    listTweets = []
-    pass
+    global process
+    if process is not None:
+        subprocess.Popen("kill " + process.pid)
+        process = None
+    return render_template('index.html')
 
 @app.route('/list_word', methods=['POST'])
 def listByWordTweets():
     pass
 
 @app.route('/show_likes', methods=['POST'])
-def showByZLikesTweets():
+def showByYLikesTweets():
+    pass
+
+@app.route('/show_rts', methods=['POST'])
+def showByZRtsTweets():
     pass
 
 
