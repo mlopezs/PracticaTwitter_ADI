@@ -1,5 +1,4 @@
-code/data/twit/*
 virtualenv/
+
 *.pyc
-practica.conf
 *.log
