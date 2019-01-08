@@ -1,12 +1,20 @@
-DIRUTIL := utils/
+DIRUTL := utils/
+DIRCFG := config/
+DIRDAT := data/
+DIRDOC := docs/
+DIRPIG := scripts/
 
-all: start-hadoop-cluster
 
-start-hadoop-cluster:
-	./$(DIRUTIL)start_hadoop_cluster.sh
+all: hadoop flume pig-test
 
-stop-hadoop-cluster:
-	./$(DIRUTIL)stop_hadoop_cluster.sh
+hadoop:
+	./$(DIRUTL)start_hadoop_cluster.sh
+	./$(DIRUTL)stop_hadoop_cluster.sh
 
-start-flume-collect:
-	./$(DIRUTIL)start_flume_collect.sh
+flume: hadoop
+	./$(DIRUTL)start_flume_collect.sh
+
+pig-test:
+	pig -f $(DIRPIG)pig_setup.pig -p PIG_HOME=$(PIG_HOME)
+	pig -f $(DIRPIG)pig_likes.pig -p LIKES=100
+	pig -f $(DIRPIG)pig_palabra.pig -p WORD="internet"
