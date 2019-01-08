@@ -1,6 +1,7 @@
 #!/bin/bash
+#!/bin/bash
 
 hdfs namenode -format
-$HADOOP_HOME/sbin/start-dfs.sh
-$HADOOP_HOME/sbin/start-yarn.sh
-$HADOOP_HOME/sbin/mr-jobhistory-daemon.sh start historyserver
+~/Programas/hadoop/sbin/start-yarn.sh && ~/Programas/hadoop/sbin/start-dfs.sh
+~/Programas/hadoop/sbin/mr-jobhistory-daemon.sh start historyserver
+jps
