@@ -1,3 +1,4 @@
+DIRSRC := src/
 DIRUTL := utils/
 DIRCFG := config/
 DIRDAT := data/
@@ -5,7 +6,7 @@ DIRDOC := docs/
 DIRPIG := scripts/
 
 
-all: hadoop flume pig-test
+all: hadoop flume pig-test start-api
 
 hadoop:
 	./$(DIRUTL)start_hadoop_cluster.sh
@@ -21,3 +22,6 @@ pig-test:
 
 rm-logs:
 	find . -name "*.log" -type f -delete
+
+start-api:
+	./$(DIRSRC)/run.py
