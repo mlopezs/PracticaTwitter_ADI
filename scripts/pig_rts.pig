@@ -1,5 +1,5 @@
 /*************************************************/
--- ~$ pig -f pig_rts.pig -p RTS=<numero_retweets_max>
+-- ~$ pig -f pig_rts.pig -p PIG_HOME=$PIG_HOME -p RTS=<numero_retweets_max>
 /*************************************************/
 
 REGISTER $PIG_HOME/lib/elephant-bird-hadoop-compat-4.15.jar
@@ -10,9 +10,7 @@ tweets = LOAD '/user/tweets-collect/' USING com.twitter.elephantbird.pig.load.Js
 
 filtered = FILTER tweets BY json#'retweet_count' > $RTS;
 
-out = FOREACH filtered GENERATE json as tweet;
+out = FOREACH filtered GENERATE json#'user'#'name' AS name, json#'user'#'screen_name' AS user, json#'tweet' as tweet, json#'retweet_count' as rts, json#'favorite_count' as mgs;
 
-DUMP out;
-
--- STORE out INTO '/user/storage/sol_rts' USING PigStorage(',');
+STORE out INTO '/user/storage/sol_rts.json' USING JsonStorage();
 

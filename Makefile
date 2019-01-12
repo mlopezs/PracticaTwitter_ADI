@@ -6,13 +6,15 @@ DIRDOC := docs/
 DIRPIG := scripts/
 
 
-all: hadoop flume pig-test start-api
+all: start-hadoop run-api
 
-hadoop:
+start-hadoop:
 	./$(DIRUTL)start_hadoop_cluster.sh
+
+stop-hadoop:
 	./$(DIRUTL)stop_hadoop_cluster.sh
 
-flume: hadoop
+flume:
 	./$(DIRUTL)start_flume_collect.sh
 
 pig-test:
@@ -23,5 +25,5 @@ pig-test:
 rm-logs:
 	find . -name "*.log" -type f -delete
 
-start-api:
-	./$(DIRSRC)/run.py
+run-api:
+	python $(DIRSRC)run.py
