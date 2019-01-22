@@ -10,7 +10,7 @@ CONTNAME 	= practicaADI
 
 DOCK   := docker
 BUILD  := build
-RUN    := run
+RUN    := App
 STOP   := stop
 DEL	   := rm
 
@@ -40,7 +40,7 @@ rm-logs:
 	find . -name "*.log" -type f -delete
 
 run-api:
-	python $(DIRSRC)run.py
+	python $(DIRSRC)App.py
 
 virtualize: run-image stop-image delete-image
 
@@ -55,3 +55,6 @@ stop-image:
 
 delete-image: 
 	$(DOCK) $(DEL) $(CONTNAME)
+
+tests:
+	nosetests --with-coverage --cover-html --cover-html-dir=src/test/results src/test
