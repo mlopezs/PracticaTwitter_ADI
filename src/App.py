@@ -69,10 +69,13 @@ def stopCollectTweets():
 
 @app.route('/list_word', methods=['POST'])
 def listByWordTweets():
-    #if not request.json or not 'word' in request.json:
-        #return make_response(jsonify({'error' : 'Bad Request'}), 400)
 
-    word = request.form['tweet_word']
+    try:
+        word = request.form['tweet_word']
+    except:
+        if not request.json or not 'tweet_word' in request.json:
+            return make_response(jsonify({'error' : 'Bad Request'}), 400)
+        word = request.json['tweet_word']
 
     listaTweets = []
 
@@ -103,10 +106,12 @@ def listByWordTweets():
 
 @app.route('/show_likes', methods=['POST'])
 def showByYLikesTweets():
- #if not request.json or not 'word' in request.json:
-        #return make_response(jsonify({'error' : 'Bad Request'}), 400)
-
-    number_mgs = request.form['tweet_likes']
+    try:
+        number_mgs = request.form['tweet_likes']
+    except:
+        if not request.json or not 'tweet_likes' in request.json:
+            return make_response(jsonify({'error' : 'Bad Request'}), 400)
+        number_mgs = request.json['tweet_likes']
 
     listaTweets = []
 
@@ -139,8 +144,12 @@ def showByYLikesTweets():
 def showByZRtsTweets():
      #if not request.json or not 'word' in request.json:
         #return make_response(jsonify({'error' : 'Bad Request'}), 400)
-
-    number_rts = request.form['tweet_retweets']
+    try:
+        number_rts = request.form['tweet_retweets']
+    except:
+        if not request.json or not 'tweet_retweets' in request.json:
+            return make_response(jsonify({'error' : 'Bad Request'}), 400)
+        number_rts = request.json['tweet_retweets']
 
     listaTweets = []
 
