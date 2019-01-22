@@ -14,3 +14,7 @@ out = FOREACH filtered GENERATE json#'user'#'name' AS name, json#'user'#'screen_
 
 STORE out INTO '/user/storage/sol_mgs.json' USING JsonStorage();
 
+fs -rm /user/storage/sol_mgs.json/.pig_schema
+fs -getmerge /user/storage/sol_mgs.json/ data/results/sol_mgs.txt
+
+fs -rm -r /user/storage/sol_mgs.json

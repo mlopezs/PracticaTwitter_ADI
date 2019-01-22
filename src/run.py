@@ -3,11 +3,13 @@
 
 from flask import Flask, request, redirect, url_for, flash, render_template, make_response, jsonify
 from flask_oauthlib.client import OAuth
+import json
 import requests
 import os, signal
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
+app.secret_key = 'development'
 oauth = OAuth()
 
 pid = 0
@@ -44,34 +46,105 @@ def stopCollectTweets():
 
 @app.route('/list_word', methods=['POST'])
 def listByWordTweets():
-    if not request.json or not 'word' in request.json:
-        return make_response(jsonify({'error' : 'Bad Request'}), 400)
+    #if not request.json or not 'word' in request.json:
+        #return make_response(jsonify({'error' : 'Bad Request'}), 400)
+
+    word = request.form['tweet_word']
 
     listaTweets = []
 
     # ejecutar weas
-    os.system("pig -f scripts/pig_palabra.pig -p WORD={}".format(request.json['word']))
-    # copy to local
-    os.system("hdfs dfs -copyToLocal /user/storage/sol_palabra results/sol_palabra.txt")
+    # os.system("pig -f scripts/pig_palabra.pig -p WORD={}".format(request.json['word']))
+    os.system("pig -f scripts/pig_palabra.pig -p PIG_HOME=$PIG_HOME -p WORD={}".format(word))
+    
+    
+    file = open("data/results/sol_palabra.txt", 'r')
+    # Hay que saltarse la primera linea para que json.loads funcione, porque la
+    # primera linea no esta en formato json
 
-    file = open("results/sol_palabra.txt", 'r')
+    file.readline() 
     line = file.readline()
 
     while line:
-        listaTweets.append(line)
+        listaTweets.append(json.loads(line))
         line = file.readline()
-        
-    return make_response(jsonify({'tweets' : listaTweets}), 200)
+
+    
+    if len(listaTweets) >=1:
+        flash(u'[200] Tweets find!')
+    else:
+        error = u'[ERROR {}] Sorry, no tweets finded...'.format(404)
+        flash(error, 'error')
+
+    return render_template('tweets_finded.html', tweets=listaTweets)
 
 @app.route('/show_likes', methods=['POST'])
 def showByYLikesTweets():
-    pass
+ #if not request.json or not 'word' in request.json:
+        #return make_response(jsonify({'error' : 'Bad Request'}), 400)
+
+    number_mgs = request.form['tweet_likes']
+
+    listaTweets = []
+
+    # ejecutar weas
+    # os.system("pig -f scripts/pig_palabra.pig -p WORD={}".format(request.json['word']))
+    os.system("pig -f scripts/pig_likes.pig -p PIG_HOME=$PIG_HOME -p LIKES={}".format(number_mgs))
+    
+    
+    file = open("data/results/sol_mgs.txt", 'r')
+    # Hay que saltarse la primera linea para que json.loads funcione, porque la
+    # primera linea no esta en formato json
+
+    file.readline() 
+    line = file.readline()
+
+    while line:
+        listaTweets.append(json.loads(line))
+        line = file.readline()
+
+    
+    if len(listaTweets) >=1:
+        flash(u'[200] Tweets find!')
+    else:
+        error = u'[ERROR {}] Sorry, no tweets finded...'.format(404)
+        flash(error, 'error')
+
+    return render_template('tweets_finded.html', tweets=listaTweets)
 
 @app.route('/show_rts', methods=['POST'])
 def showByZRtsTweets():
-    pass
+     #if not request.json or not 'word' in request.json:
+        #return make_response(jsonify({'error' : 'Bad Request'}), 400)
 
+    number_rts = request.form['tweet_retweets']
 
+    listaTweets = []
+
+    # ejecutar weas
+    # os.system("pig -f scripts/pig_palabra.pig -p WORD={}".format(request.json['word']))
+    os.system("pig -f scripts/pig_rts.pig -p PIG_HOME=$PIG_HOME -p RTS={}".format(number_rts))
+    
+    
+    file = open("data/results/sol_rts.txt", 'r')
+    # Hay que saltarse la primera linea para que json.loads funcione, porque la
+    # primera linea no esta en formato json
+
+    file.readline() 
+    line = file.readline()
+
+    while line:
+        listaTweets.append(json.loads(line))
+        line = file.readline()
+
+    
+    if len(listaTweets) >=1:
+        flash(u'[200] Tweets find!')
+    else:
+        error = u'[ERROR {}] Sorry, no tweets finded...'.format(404)
+        flash(error, 'error')
+
+    return render_template('tweets_finded.html', tweets=listaTweets)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
