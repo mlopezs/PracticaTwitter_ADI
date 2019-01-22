@@ -1,0 +1,15 @@
+#Hadoop
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+export HADOOP_HOME=/home/hadoop/
+export PATH=$PATH:$HADOOP_HOME/bin:$JAVA_HOME/bin
+
+#Pig
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop/
+export PIG_CLASSPATH=$HADOOP_CONF_DIR
+export PIG_HOME=/home/pig-0.17.0
+export PATH=$PATH:$PIG_HOME/bin
+
+#Flume
+export FLUME_HOME=/home/flume-1.8.0
+export PATH=$PATH:$FLUME_HOME/bin/
+export CLASSPATH=$CLASSPATH:$FLUME_HOME/lib/*

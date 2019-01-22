@@ -41,9 +41,7 @@ def collectTweets():
         try:
             os.system('utils/start_flume_collect.sh')
             scavenging = True
-            print "****************************"
             print("PID: {}".format(pid))
-            print "****************************"
         except:
             error = u'[ERROR {}] Sorry, imposible to scavenging. Try again later...'.format(503)
             flash(error, 'error')

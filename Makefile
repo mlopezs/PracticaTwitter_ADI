@@ -5,6 +5,17 @@ DIRDAT := data/
 DIRDOC := docs/
 DIRPIG := scripts/
 
+IMAGNAME 	= twitter_scavenger
+CONTNAME 	= practicaADI
+
+DOCK   := docker
+BUILD  := build
+RUN    := run
+STOP   := stop
+DEL	   := rm
+
+BFLAGS := . -t $(IMAGNAME)
+RFLAGS := --name $(CONTNAME) -i -p 8080:8080 -t $(IMAGNAME)
 
 all: start-hadoop run-api
 
@@ -30,3 +41,17 @@ rm-logs:
 
 run-api:
 	python $(DIRSRC)run.py
+
+virtualize: run-image stop-image delete-image
+
+run-image:
+	$(DOCK) $(RUN) $(RFLAGS)
+
+build-image:
+	$(DOCK) $(BUILD) $(BFLAGS)
+
+stop-image:
+	$(DOCK) $(STOP) $(CONTNAME)
+
+delete-image: 
+	$(DOCK) $(DEL) $(CONTNAME)
