@@ -13,10 +13,16 @@ app.secret_key = 'development'
 oauth = OAuth()
 
 pid = 0
+scavenging = False
 
 # Pagina principal
 @app.route('/')
 def index():
+    global scavenging
+
+    if scavenging == True:
+        flash(u'[200] Scavenging tweets!')
+
     return render_template('index.html')
 
 @app.route('/operations', methods=['GET'])
@@ -28,10 +34,20 @@ def show_operations():
 @app.route('/collect', methods=['POST'])
 def collectTweets():
     global pid
+    global scavenging
+
     pid = os.fork()
     if pid == 0:
-        os.system('utils/start_flume_collect.sh')
-    print("PID: {}".format(pid))
+        try:
+            os.system('utils/start_flume_collect.sh')
+            scavenging = True
+            print "****************************"
+            print("PID: {}".format(pid))
+            print "****************************"
+        except:
+            error = u'[ERROR {}] Sorry, imposible to scavenging. Try again later...'.format(503)
+            flash(error, 'error')
+        
     return render_template('index.html')
 
 
@@ -39,9 +55,18 @@ def collectTweets():
 @app.route('/no_collect', methods=['POST'])
 def stopCollectTweets():
     global pid
+    global scavenging
+
     if pid != 0:
-        os.kill(pid, signal.SIGTERM)
-        pid = 0
+        try:
+            os.system('utils/stop_flume_collect.sh')
+            pid = 0
+            scavenging = False
+            flash(u'[200] Stop scavenging tweets!')
+        except:
+            error = u'[ERROR {}] Sorry, imposible to stop. Try again later...'.format(503)
+            flash(error, 'error')
+
     return render_template('index.html')
 
 @app.route('/list_word', methods=['POST'])

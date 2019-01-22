@@ -14,8 +14,11 @@ start-hadoop:
 stop-hadoop:
 	./$(DIRUTL)stop_hadoop_cluster.sh
 
-flume:
+start-flume:
 	./$(DIRUTL)start_flume_collect.sh
+
+stop-flume:
+	./$(DIRUTL)stop_flume_collect.sh
 
 pig-test:
 	pig -f $(DIRPIG)pig_likes.pig -p LIKES=100
