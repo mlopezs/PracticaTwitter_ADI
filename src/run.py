@@ -67,6 +67,15 @@ def stopCollectTweets():
 
     return render_template('index.html')
 
+@app.route('/test')
+def show_tweets(path):
+
+    with open(path + '/part-m-00000', 'r') as myfile:
+        data=myfile.read().replace('\n', '')
+        flash(json.loads(data))
+    
+    return make_response(jsonify('OK'), 200)
+
 @app.route('/list_word', methods=['POST'])
 def listByWordTweets():
     #if not request.json or not 'word' in request.json:
