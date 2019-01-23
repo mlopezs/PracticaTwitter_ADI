@@ -1,5 +1,6 @@
 *.pyc
 *.log
 *.py.swp
+.coverage
 
 FlumeData.*

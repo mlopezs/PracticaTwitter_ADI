@@ -40,7 +40,7 @@ rm-logs:
 	find . -name "*.log" -type f -delete
 
 run-api:
-	python $(DIRSRC)App.py
+	python $(DIRSRC)server/Server.py
 
 virtualize: run-image stop-image delete-image
 
@@ -57,4 +57,4 @@ delete-image:
 	$(DOCK) $(DEL) $(CONTNAME)
 
 tests:
-	nosetests --with-coverage --cover-html --cover-html-dir=src/test/results src/test
+	nosetests --with-coverage --cover-html --cover-html-dir=src/server/test/results src/server
