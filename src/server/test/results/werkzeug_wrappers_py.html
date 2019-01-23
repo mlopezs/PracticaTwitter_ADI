@@ -31,8 +31,8 @@
 
         <h2 class="stats">
             622 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">301 run</span>
-            <span class="mis shortkey_m button_toggle_mis">321 missing</span>
+            <span class="run hide_run shortkey_r button_toggle_run">297 run</span>
+            <span class="mis shortkey_m button_toggle_mis">325 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
             
@@ -903,7 +903,7 @@
 <p id="n834" class="stm run hide_run"><a href="#n834">834</a></p>
 <p id="n835" class="stm run hide_run"><a href="#n835">835</a></p>
 <p id="n836" class="pln"><a href="#n836">836</a></p>
-<p id="n837" class="stm run hide_run"><a href="#n837">837</a></p>
+<p id="n837" class="stm mis"><a href="#n837">837</a></p>
 <p id="n838" class="pln"><a href="#n838">838</a></p>
 <p id="n839" class="stm run hide_run"><a href="#n839">839</a></p>
 <p id="n840" class="stm run hide_run"><a href="#n840">840</a></p>
@@ -988,8 +988,8 @@
 <p id="n919" class="stm mis"><a href="#n919">919</a></p>
 <p id="n920" class="pln"><a href="#n920">920</a></p>
 <p id="n921" class="stm run hide_run"><a href="#n921">921</a></p>
-<p id="n922" class="stm run hide_run"><a href="#n922">922</a></p>
-<p id="n923" class="stm run hide_run"><a href="#n923">923</a></p>
+<p id="n922" class="stm mis"><a href="#n922">922</a></p>
+<p id="n923" class="stm mis"><a href="#n923">923</a></p>
 <p id="n924" class="pln"><a href="#n924">924</a></p>
 <p id="n925" class="stm run hide_run"><a href="#n925">925</a></p>
 <p id="n926" class="stm run hide_run"><a href="#n926">926</a></p>
@@ -1068,7 +1068,7 @@
 <p id="n999" class="pln"><a href="#n999">999</a></p>
 <p id="n1000" class="pln"><a href="#n1000">1000</a></p>
 <p id="n1001" class="stm run hide_run"><a href="#n1001">1001</a></p>
-<p id="n1002" class="stm run hide_run"><a href="#n1002">1002</a></p>
+<p id="n1002" class="stm mis"><a href="#n1002">1002</a></p>
 <p id="n1003" class="pln"><a href="#n1003">1003</a></p>
 <p id="n1004" class="stm run hide_run"><a href="#n1004">1004</a></p>
 <p id="n1005" class="stm run hide_run"><a href="#n1005">1005</a></p>
@@ -2934,7 +2934,7 @@
 <p id="t834" class="stm run hide_run">        <span class="key">elif</span> <span class="key">not</span> <span class="nam">headers</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t835" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">headers</span> <span class="op">=</span> <span class="nam">Headers</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t836" class="pln">        <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t837" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">headers</span> <span class="op">=</span> <span class="nam">Headers</span><span class="op">(</span><span class="nam">headers</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t837" class="stm mis">            <span class="nam">self</span><span class="op">.</span><span class="nam">headers</span> <span class="op">=</span> <span class="nam">Headers</span><span class="op">(</span><span class="nam">headers</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t838" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t839" class="stm run hide_run">        <span class="key">if</span> <span class="nam">content_type</span> <span class="key">is</span> <span class="nam">None</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t840" class="stm run hide_run">            <span class="key">if</span> <span class="nam">mimetype</span> <span class="key">is</span> <span class="nam">None</span> <span class="key">and</span> <span class="str">'content-type'</span> <span class="key">not</span> <span class="key">in</span> <span class="nam">self</span><span class="op">.</span><span class="nam">headers</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
@@ -3019,8 +3019,8 @@
 <p id="t919" class="stm mis">                <span class="key">raise</span> <span class="nam">TypeError</span><span class="op">(</span><span class="str">'cannot convert WSGI application into '</span><span class="strut">&nbsp;</span></p>
 <p id="t920" class="pln">                                <span class="str">'response objects without an environ'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t921" class="stm run hide_run">            <span class="nam">response</span> <span class="op">=</span> <span class="nam">BaseResponse</span><span class="op">(</span><span class="op">*</span><span class="nam">_run_wsgi_app</span><span class="op">(</span><span class="nam">response</span><span class="op">,</span> <span class="nam">environ</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t922" class="stm run hide_run">        <span class="nam">response</span><span class="op">.</span><span class="nam">__class__</span> <span class="op">=</span> <span class="nam">cls</span><span class="strut">&nbsp;</span></p>
-<p id="t923" class="stm run hide_run">        <span class="key">return</span> <span class="nam">response</span><span class="strut">&nbsp;</span></p>
+<p id="t922" class="stm mis">        <span class="nam">response</span><span class="op">.</span><span class="nam">__class__</span> <span class="op">=</span> <span class="nam">cls</span><span class="strut">&nbsp;</span></p>
+<p id="t923" class="stm mis">        <span class="key">return</span> <span class="nam">response</span><span class="strut">&nbsp;</span></p>
 <p id="t924" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t925" class="stm run hide_run">    <span class="op">@</span><span class="nam">classmethod</span><span class="strut">&nbsp;</span></p>
 <p id="t926" class="stm run hide_run">    <span class="key">def</span> <span class="nam">from_app</span><span class="op">(</span><span class="nam">cls</span><span class="op">,</span> <span class="nam">app</span><span class="op">,</span> <span class="nam">environ</span><span class="op">,</span> <span class="nam">buffered</span><span class="op">=</span><span class="nam">False</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
@@ -3099,7 +3099,7 @@
 <p id="t999" class="pln">        <span class="com"># if an unicode string is set, it's encoded directly so that we</span><span class="strut">&nbsp;</span></p>
 <p id="t1000" class="pln">        <span class="com"># can set the content length</span><span class="strut">&nbsp;</span></p>
 <p id="t1001" class="stm run hide_run">        <span class="key">if</span> <span class="nam">isinstance</span><span class="op">(</span><span class="nam">value</span><span class="op">,</span> <span class="nam">text_type</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t1002" class="stm run hide_run">            <span class="nam">value</span> <span class="op">=</span> <span class="nam">value</span><span class="op">.</span><span class="nam">encode</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">charset</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t1002" class="stm mis">            <span class="nam">value</span> <span class="op">=</span> <span class="nam">value</span><span class="op">.</span><span class="nam">encode</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">charset</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t1003" class="pln">        <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t1004" class="stm run hide_run">            <span class="nam">value</span> <span class="op">=</span> <span class="nam">bytes</span><span class="op">(</span><span class="nam">value</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t1005" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">response</span> <span class="op">=</span> <span class="op">[</span><span class="nam">value</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
@@ -4136,7 +4136,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2019-01-23 17:11
+            created at 2019-01-23 18:01
         </p>
     </div>
 </div>

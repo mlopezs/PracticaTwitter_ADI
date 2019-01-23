@@ -1,0 +1,17 @@
+name	user	tweet	rts	mgs
+{"name":"Explicator","user":"explicator22","tweet":"RT @bbimbi: HILO MUY SERIO\n\nLo que escribí hoy para @todonoticias no es una noticia más. Es algo insano, peor que cualquier cosa que hayas…","rts":"0","mgs":"0"}
+{"name":"Explicator","user":"explicator22","tweet":"RT @bbimbi: HILO MUY SERIO\n\nLo que escribí hoy para @todonoticias no es una noticia más. Es algo insano, peor que cualquier cosa que hayas…","rts":"0","mgs":"0"}
+{"name":"n a d i a","user":"MartinezNadia44","tweet":"RT @luzular: Ahora cada vez que me dicen algo tierno estoy tipo “Jajajajaj mmmmm vs dsis “ me lo tomo como algo gracioso por que ya se que…","rts":"0","mgs":"0"}
+{"name":"Sapatona Sapatinho","user":"Arydyeyo","tweet":"@ArquivoDaMusica @g1 amor, como eu vou provar algo que basta você ver para saber?","rts":"0","mgs":"0"}
+{"name":"ⓥⓐⓛⓔⓝ","user":"Valen_Dambrosio","tweet":"Hay algo mas satisfactorio que escuchar el ruido del agua al nadar?","rts":"0","mgs":"0"}
+{"name":"LuciaGr20","user":"LuciaGr20","tweet":"RT @chenoafanclub: ❗️SE ACERCA algo nuevo de @Chenoaoficial  https://t.co/72vDy9Aib1","rts":"0","mgs":"0"}
+{"name":"Norka","user":"norkatavio","tweet":"RT @alejodorowsky: Vale más merecer algo y no obtenerlo, que obtener algo que no merecemos.","rts":"0","mgs":"0"}
+{"name":"Dudanunex","user":"Dudanunexxx","tweet":"RT @apoli123: quando eu to no mar e algo toca na minha perna https://t.co/QnTWhBNkDp","rts":"0","mgs":"0"}
+{"name":"Magui Funes","user":"FunesMagui","tweet":"RT @iane_marini: Existe algo más feo y asqueroso que los gatos?","rts":"0","mgs":"0"}
+{"name":"Ryb.","user":"vharzt","tweet":"RT @WeWantTOPInSP: Has entendido algo del video? #Chlorine https://t.co/bUSw24Uwrl","rts":"0","mgs":"0"}
+{"name":"Reagan","user":"Reductoliberal","tweet":"RT @juanrallo: Echenique debería dimitir de acuerdo con el código ético de Podemos. Pero supongo que de algo tiene que vivir.","rts":"0","mgs":"0"}
+{"name":"SrAtari","user":"Lu_gomez4","tweet":"RT @Tinchoaristi: El sábado estábamos en un boliche Ayrton se va a la barra a pedirse algo  vuelve tomando una LATA DE BIRRA CON PAJITA lo…","rts":"0","mgs":"0"}
+{"name":"Gisela Juarez","user":"GiselaJD22","tweet":"RT @IndirectasRock: Si te rompe las bolas algo lo hablamos, pero no me mientas, no digas que no te pasa nada cuando en verdad te pone como…","rts":"0","mgs":"0"}
+{"name":"ana moraes","user":"anaamoraaes","tweet":"RT @beauyhs: E quando a fã interrompeu o Harry para dizer que tinha feito uma tattoo, e o H achou que era algo sobre ele, e quando ele perg…","rts":"0","mgs":"0"}
+{"name":"Aglaia Berlutti","user":"Aglaia_Berlutti","tweet":"Lo que me tiene temblando de emoción, es que es el primer paso hacia un terreno desconocido, algo que no había pasa… https://t.co/OhQNFnJjSe","rts":"0","mgs":"0"}
+{"name":"Frxmbuesitx","user":"SofiaBarretto_","tweet":"RT @UltimoPucho: no se trata de tener algo serio, sino de tener algo sano","rts":"0","mgs":"0"}
