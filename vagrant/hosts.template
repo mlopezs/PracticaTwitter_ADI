@@ -1,0 +1,3 @@
+192.168.0.2 hadoop-master
+192.168.0.3 haddop-slave1
+192.168.0.4 hadoop-slave2

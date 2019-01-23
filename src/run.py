@@ -8,12 +8,67 @@ import requests
 import os, signal
 
 app = Flask(__name__)
+oauth = OAuth()
 app.config['DEBUG'] = True
 app.secret_key = 'development'
-oauth = OAuth()
+mySession=None
+currentUser=None
 
-pid = 0
-scavenging = False
+scavenging=False
+
+twitter = oauth.remote_app('twitter',
+    base_url='https://api.twitter.com/1.1/',
+    request_token_url='https://api.twitter.com/oauth/request_token',
+    access_token_url='https://api.twitter.com/oauth/access_token',
+    authorize_url='https://api.twitter.com/oauth/authenticate',
+    consumer_key='kaZxew3pORQWPaa7ncK009x7u', # Cambiar
+    consumer_secret='VcXVuZBobDJq9GXqYhDrmUeRE0gdpkYL6dBnc4gL7J9uOUAYwC'  # Cambiar
+)
+
+# Obtener token para esta sesion
+@twitter.tokengetter
+def get_twitter_token(token=None):
+    global mySession
+
+    if mySession is not None:
+        return mySession['oauth_token'], mySession['oauth_token_secret']
+
+# Limpiar sesion anterior e incluir la nueva sesion
+@app.before_request
+def before_request():
+    global mySession
+    global currentUser
+
+    currentUser = None
+    if mySession is not None:
+        currentUser = mySession
+
+# Get auth token (request)
+@app.route('/login')
+def login():
+    callback_url=url_for('oauthorized', next=request.args.get('next'))
+    return twitter.authorize(callback=callback_url or request.referrer or None)
+
+# Eliminar sesion
+@app.route('/logout')
+def logout():
+    global mySession
+
+    mySession = None
+    return redirect(url_for('index'))
+
+# Callback
+@app.route('/oauthorized')
+def oauthorized():
+    global mySession
+
+    resp = twitter.authorized_response()
+    if resp is None:
+        flash('You denied the request to sign in.')
+    else:
+        mySession = resp
+    return redirect(url_for('index'))
+
 
 # Pagina principal
 @app.route('/')

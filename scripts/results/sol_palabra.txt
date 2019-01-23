@@ -1,3 +1,0 @@
-name	user	tweet	rts	mgs
-{"name":"lucas;","user":"idoljin_","tweet":"opina de agustin — hola agustin sos piolasa y me caes bien xd https://t.co/a036JUFYBi","rts":"0","mgs":"0"}
-{"name":"on yna","user":"solbinv","tweet":"RT @baekegoist: imagina o exo no brasil e o jongdae fala hola yo soy chen","rts":"0","mgs":"0"}

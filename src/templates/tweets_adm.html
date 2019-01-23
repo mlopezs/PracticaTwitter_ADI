@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
 
+{% if user %}
+<a href="{{ url_for('logout') }}"><img src="{{url_for('static', filename='sign-out.png') }}" alt="sign out"></a>
+{% else %}
+<a href="{{ url_for('login') }}"><img src="{{url_for('static', filename='sign-in.png') }}" alt="sign in"></a>
+{% endif %}
+
 <main role="main" class="container">
     <div method="get" class="my-3 p-3 bg-main-container rounded shadow-sm">
     <h6 class="border-bottom pb-2 mb-0 text-title-container">Tweets operation</h6>

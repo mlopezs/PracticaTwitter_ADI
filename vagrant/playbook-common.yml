@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Update apt
+      apt: update_cache=yes
+
+    - name: Install java-jre
+      apt: name=default-jre
+
+    - name: Install java-jdk
+      apt: name=default-jdk
+
+    # Continuar desde aqui
+
+    #######################
+
+    - name: Copy hosts
+      copy:
+        src: hosts.template
+        dest: /tmp/hosts
+    - name: Add hosts
+      shell: cat /tmp/hosts >> /etc/hosts
+
+    - name: Delete default route
+      shell: ip route del default
+    - name: Add default route
+      shell: ip route add default dev eth1
