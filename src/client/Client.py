@@ -13,6 +13,53 @@ oauth = OAuth()
 
 endpoint = 'http://localhost:8080'
 
+
+
+mysession = None
+currentUser = None
+
+twitter = oauth.remote_app('twitter',
+    base_url='https://api.twitter.com/1.1/',
+    request_token_url='https://api.twitter.com/oauth/request_token',
+    access_token_url='https://api.twitter.com/oauth/access_token',
+    authorize_url='https://api.twitter.com/oauth/authenticate',
+    consumer_key='kaZxew3pORQWPaa7ncK009x7u',
+    consumer_secret='VcXVuZBobDJq9GXqYhDrmUeRE0gdpkYL6dBnc4gL7J9uOUAYwC'
+)
+
+# Obtencion de tokens
+@twitter.tokengetter
+def get_twitter_token(token=None):
+    global mysession
+    
+    if mysession is not None:
+        return mysession['oauth_token'], mysession['oauth_token_secret']
+
+# Limpiar sesion anterior e incluir la nueva sesion
+@app.before_request
+def before_request():
+    global mysession
+    global currentUser
+
+    currentUser = None
+    if mysession is not None:
+        currentUser = mysession
+
+@app.route('/login')
+def login():
+    callback_url=url_for('oauthorized', next=request.args.get('next'))
+    return twitter.authorize(callback=callback_url or request.referrer or None)
+
+@app.route('/oauthorized')
+def oauthorized():
+    global mysession
+    
+    resp = twitter.authorized_response()
+    if resp is not None:
+        mysession = resp
+        
+    return redirect(url_for('index'))
+
 @app.route('/')
 def index():
     return render_template('index.html')
