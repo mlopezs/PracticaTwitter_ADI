@@ -57,4 +57,4 @@ delete-image:
 	$(DOCK) $(DEL) $(CONTNAME)
 
 tests:
-	nosetests --with-coverage --cover-html --cover-html-dir=src/server/test/results src/server
+	nosetests --with-coverage --cover-html --cover-html-dir=src/server/test/html src/server

@@ -15,6 +15,8 @@ oauth = OAuth()
 pid = 0
 scavenging = False
 
+user = 'Default'
+
 webhooks = []
 
 # Recogida de tweets
@@ -24,6 +26,8 @@ def collectTweets():
     global pid
     global scavenging
 
+    notify(user, 'collect')
+
     if scavenging:
         return make_response(jsonify({'error' : 'Forbidden'}), 403)
     
@@ -31,7 +35,7 @@ def collectTweets():
 
     pid = os.fork()
     if pid is 0:
-        os.system('utils/start_flume_collect.sh')
+        #os.system('utils/start_flume_collect.sh')
         os._exit(0)
         
     return make_response(jsonify({'message' : 'collection is starting'}), 200)
@@ -42,6 +46,8 @@ def collectTweets():
 def stopCollectTweets():
     global pid
     global scavenging
+
+    notify(user, 'stop_collect')
 
     if not scavenging:
         return make_response(jsonify({'error' : 'Forbiden'}), 403)
@@ -55,18 +61,16 @@ def stopCollectTweets():
 @app.route('/list_word', methods=['POST'])
 def listByWordTweets():
 
+    notify(user, 'filter_by_word')
+
     if not request.json or not 'tweet_word' in request.json:
         return make_response(jsonify({'error' : 'Bad Request'}), 400)
 
     listaTweets = []
 
-    # ejecutar weas
-    # os.system("pig -f scripts/pig_palabra.pig -p WORD={}".format(request.json['word']))
     os.system("pig -f scripts/pig_palabra.pig -p PIG_HOME=$PIG_HOME -p WORD={}".format(request.json['tweet_word']))
     
     file = open("data/results/sol_palabra.txt", 'r')
-    # Hay que saltarse la primera linea para que json.loads funcione, porque la
-    # primera linea no esta en formato json
 
     file.readline() 
     line = file.readline()
@@ -82,6 +86,8 @@ def listByWordTweets():
 
 @app.route('/show_likes', methods=['POST'])
 def showByYLikesTweets():
+
+    notify(user, 'filter_by_likes')
 
     if not request.json or not 'tweet_likes' in request.json:
         return make_response(jsonify({'error' : 'Bad Request'}), 400)
@@ -106,6 +112,8 @@ def showByYLikesTweets():
 @app.route('/show_rts', methods=['POST'])
 def showByRtsTweets():
 
+    notify(user, 'filter_by_rt')
+
     if not request.json or not 'tweet_retweets' in request.json:
         return make_response(jsonify({'error' : 'Bad Request'}), 400)
 
@@ -129,14 +137,14 @@ def showByRtsTweets():
 @app.route('/webhook', methods = ['POST'])
 def addWebhook():
     
-    attr = ['endpoint']
-    if not request.json or [it for it in attr if not it in request.json]:
+    if not request.json or not 'endpoint' in request.json:
         return make_response(jsonify({'error' : 'Bad Request'}), 400)
+
     endpoint = request.json['endpoint']    
     
-    auxWebHook = list(filter(lambda t:t == endpoint, webhooks))
-    if len(auxWebHook) > 0:
+    if endpoint in webhooks:
         return make_response(jsonify({'error' : 'Conflict'}), 409)
+
     webhooks.append(endpoint)
 
     return make_response(jsonify({"created":endpoint}), 201)
@@ -144,7 +152,7 @@ def addWebhook():
 def notify(user, operation):
     for itWH in webhooks:
         response=requests.post(itWH, json = {'operation':operation, 'user':user})
-        print(response.status_code)
+        print response.status_code
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
