@@ -11,9 +11,14 @@
     - name: Install java-jdk
       apt: name=default-jdk
 
-    # Continuar desde aqui
+    - name: Extract hadoop
+      unarchive:
+        src: http://apache.rediris.es/hadoop/core/hadoop-2.9.1/hadoop-2.9.1.tar.gz
+        dest: /home/vagrant/
+        remote_src: yes
 
-    #######################
+    - name: Export environment variables
+      shell: export HADOOP_HOME=/home/vagrant/hadoop-2.9.1/ && export JAVA_HOME=/usr/lib/jvm//usr/lib/jvm/default-java/ && export PATH=$PATH:$HADOOP_HOME/bin:$JAVA_HOME/bin
 
     - name: Copy hosts
       copy:
