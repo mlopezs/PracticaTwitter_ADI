@@ -32,7 +32,7 @@ def collectTweets():
         #os.system('utils/start_flume_collect.sh')
         os._exit(0)
         
-    return make_response(200)
+    return make_response(jsonify({'message' : 'collection is starting'}), 200)
 
 
 
@@ -44,11 +44,11 @@ def stopCollectTweets():
     if not scavenging:
         return make_response(jsonify({'error' : 'Forbiden'}), 403)
         
-    os.system('utils/stop_flume_collect.sh')
+    #os.system('utils/stop_flume_collect.sh')
     pid = 0
     scavenging = False
 
-    return make_response(200)
+    return make_response(jsonify({'message' : 'collection stop successfully'}), 200)
 
 @app.route('/list_word', methods=['POST'])
 def listByWordTweets():
@@ -85,9 +85,11 @@ def showByYLikesTweets():
 
     listaTweets = []
 
+    print "Runnin pig"
+
     os.system("pig -f scripts/pig_likes.pig -p PIG_HOME=$PIG_HOME -p LIKES={}".format(request.json['tweet_likes']))
     
-    
+
     file = open("data/results/sol_mgs.txt", 'r')
 
     file.readline() 
