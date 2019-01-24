@@ -25,21 +25,21 @@ twitter = oauth.remote_app( 'twitter',
     consumer_secret     =   'VcXVuZBobDJq9GXqYhDrmUeRE0gdpkYL6dBnc4gL7J9uOUAYwC'
 )
 
+@app.before_request
+def before_request():
+    global my_session
+    global current_user
+    
+    currentUser = None
+    if my_session is not None:
+        current_user = my_session
+
 @twitter.tokengetter
 def get_twitter_token(token=None):
     global my_session
 
     if my_session is not None:
         return my_session['oauth_token'], my_session['oauth_token_secret']
-
-@app.before_request
-def before_request():
-    global my_session
-    global currentUser
-    
-    currentUser = None
-    if my_session is not None:
-        currentUser = my_session
 
 @app.route('/login')
 def login():
@@ -136,7 +136,7 @@ def list_tweets_by_likes():
 def list_tweets_by_rt():
     if my_session is None or current_user is None:
         return redirect(url_for('login'))
-        
+
     rt_count = request.form['tweet_retweets']
     response = requests.post(endpoint + '/show_rts', json={'tweet_retweets' : rt_count})
 
