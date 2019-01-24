@@ -4,7 +4,5 @@
 .coverage
 __pycache__
 *.crc
-
 FlumeData.*
-
 .vscode/*

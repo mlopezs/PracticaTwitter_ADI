@@ -15,7 +15,7 @@
 
           <form action="{{ url_for('list_tweets_by_likes') }}"  method=post>
             <p>
-                <label class="text-bold-tweet" type="search">Number of Y Likes: </label>
+                <label class="text-bold-tweet" type="search">Less than Y likes: </label>
                 <input type=text name=tweet_likes size=40>
                 <input type=submit value="Find"> 
             </p>
@@ -23,7 +23,7 @@
       
           <form action="{{ url_for('list_tweets_by_rt') }}"  method=post>
             <p>
-                <label class="text-bold-tweet" type="search">Number of Z retweets: </label> 
+                <label class="text-bold-tweet" type="search">More than Z retweets: </label> 
                 <input type=text name=tweet_retweets size=40>
                 <input type=submit value="Find"> 
             </p>
