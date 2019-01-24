@@ -1,0 +1,10 @@
+*.pyc
+*.log
+*.py.swp
+.coverage
+__pycache__
+*.crc
+
+FlumeData.*
+
+.vscode/*
