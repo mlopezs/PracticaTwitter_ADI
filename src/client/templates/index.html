@@ -2,12 +2,12 @@
 {% block body %}
 
 <main role="main" class="container">
-    <form action="{{ url_for('collectTweets') }}"  method=post>
+    <form action="{{ url_for('collect_tweets') }}"  method=post>
         <p>
             <input type=submit value="START COLLECTION">
         </p>
     </form>
-    <form action="{{ url_for('stopCollectTweets') }}" method=post>
+    <form action="{{ url_for('stop_collect') }}" method=post>
         <p>
             <input type=submit value="STOP COLLECTION">
         </p>

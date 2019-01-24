@@ -33,7 +33,7 @@ class RESTTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
 
     def test_words(self):
-        response = self.tester.post('/list_word', json={'tweet_word' : 'algo'})
+        response = self.tester.post('/list_word', json={'tweet_word' : 'cosa'})
         self.assertEqual(response.status_code, 200)
 
     def test_likes_failure(self):
@@ -41,7 +41,7 @@ class RESTTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
 
     def test_likes(self):
-        response =  self.tester.post('/show_likes', json={'tweet_likes' : 'algo'})
+        response =  self.tester.post('/show_likes', json={'tweet_likes' : 2})
         self.assertEqual(response.status_code, 200)
 
     def test_retweets_failure(self):
@@ -49,7 +49,7 @@ class RESTTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
 
     def test_retweets(self):
-        response =  self.tester.post('/show_rts', json={'tweet_retweets' : 'algo'})
+        response =  self.tester.post('/show_rts', json={'tweet_retweets' : 2})
         self.assertEqual(response.status_code, 200)
 
     def test_stop_collect(self):

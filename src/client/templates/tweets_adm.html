@@ -5,7 +5,7 @@
     <div method="get" class="my-3 p-3 bg-main-container rounded shadow-sm">
     <h6 class="border-bottom pb-2 mb-0 text-title-container">Tweets operation</h6>
     <label></label>      
-          <form action="{{ url_for('listByWordTweets') }}"  method=post>
+          <form action="{{ url_for('list_tweets_by_word') }}"  method=post>
             <p>
                 <label class="text-bold-tweet" type="search">Word: </label>
                 <input type=text name=tweet_word size=40>
@@ -13,7 +13,7 @@
             </p>
           </form>
 
-          <form action="{{ url_for('showByYLikesTweets') }}"  method=post>
+          <form action="{{ url_for('list_tweets_by_likes') }}"  method=post>
             <p>
                 <label class="text-bold-tweet" type="search">Number of Y Likes: </label>
                 <input type=text name=tweet_likes size=40>
@@ -21,7 +21,7 @@
             </p>
           </form>
       
-          <form action="{{ url_for('showByZRtsTweets') }}"  method=post>
+          <form action="{{ url_for('list_tweets_by_likes') }}"  method=post>
             <p>
                 <label class="text-bold-tweet" type="search">Number of Z retweets: </label> 
                 <input type=text name=tweet_retweets size=40>

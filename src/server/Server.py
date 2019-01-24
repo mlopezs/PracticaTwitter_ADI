@@ -5,7 +5,7 @@ from flask import Flask, request, redirect, url_for, flash, render_template, mak
 from flask_oauthlib.client import OAuth
 import json
 import requests
-import os, signal
+import os, signal, time
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -29,8 +29,8 @@ def collectTweets():
 
     pid = os.fork()
     if pid is 0:
-        os.system('utils/start_flume_collect.sh')
-        print("PID: {}".format(pid))
+        #os.system('utils/start_flume_collect.sh')
+        os._exit(0)
         
     return make_response(200)
 
