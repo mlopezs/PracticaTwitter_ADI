@@ -29,7 +29,7 @@ class RESTTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
 
     def test_words(self):
-        response = self.tester.post('/list_word', json={'tweet_word' : ' '})
+        response = self.tester.post('/list_word', json={'tweet_word' : 'if'})
         self.assertEqual(response.status_code, 200)
 
     def test_likes_failure(self):

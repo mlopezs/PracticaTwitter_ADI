@@ -8,7 +8,7 @@
     
     
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for werkzeug/wrappers.py: 48%</title>
+    <title>Coverage for werkzeug/wrappers.py: 47%</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -24,15 +24,15 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>werkzeug/wrappers.py</b> :
-            <span class="pc_cov">48%</span>
+            <span class="pc_cov">47%</span>
         </h1>
 
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
 
         <h2 class="stats">
             622 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">297 run</span>
-            <span class="mis shortkey_m button_toggle_mis">325 missing</span>
+            <span class="run hide_run shortkey_r button_toggle_run">292 run</span>
+            <span class="mis shortkey_m button_toggle_mis">330 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
             
@@ -124,8 +124,8 @@
 <p id="n55" class="pln"><a href="#n55">55</a></p>
 <p id="n56" class="pln"><a href="#n56">56</a></p>
 <p id="n57" class="pln"><a href="#n57">57</a></p>
-<p id="n58" class="stm run hide_run"><a href="#n58">58</a></p>
-<p id="n59" class="stm run hide_run"><a href="#n59">59</a></p>
+<p id="n58" class="stm mis"><a href="#n58">58</a></p>
+<p id="n59" class="stm mis"><a href="#n59">59</a></p>
 <p id="n60" class="pln"><a href="#n60">60</a></p>
 <p id="n61" class="pln"><a href="#n61">61</a></p>
 <p id="n62" class="stm run hide_run"><a href="#n62">62</a></p>
@@ -983,11 +983,11 @@
 <p id="n914" class="pln"><a href="#n914">914</a></p>
 <p id="n915" class="pln"><a href="#n915">915</a></p>
 <p id="n916" class="pln"><a href="#n916">916</a></p>
-<p id="n917" class="stm run hide_run"><a href="#n917">917</a></p>
-<p id="n918" class="stm run hide_run"><a href="#n918">918</a></p>
+<p id="n917" class="stm mis"><a href="#n917">917</a></p>
+<p id="n918" class="stm mis"><a href="#n918">918</a></p>
 <p id="n919" class="stm mis"><a href="#n919">919</a></p>
 <p id="n920" class="pln"><a href="#n920">920</a></p>
-<p id="n921" class="stm run hide_run"><a href="#n921">921</a></p>
+<p id="n921" class="stm mis"><a href="#n921">921</a></p>
 <p id="n922" class="stm mis"><a href="#n922">922</a></p>
 <p id="n923" class="stm mis"><a href="#n923">923</a></p>
 <p id="n924" class="pln"><a href="#n924">924</a></p>
@@ -2155,8 +2155,8 @@
 <p id="t55" class="pln"><span class="str">    imported unless required.  DO NOT USE!</span><span class="strut">&nbsp;</span></p>
 <p id="t56" class="pln"><span class="str">    """</span><span class="strut">&nbsp;</span></p>
 <p id="t57" class="pln">    <span class="key">global</span> <span class="nam">_run_wsgi_app</span><span class="strut">&nbsp;</span></p>
-<p id="t58" class="stm run hide_run">    <span class="key">from</span> <span class="nam">werkzeug</span><span class="op">.</span><span class="nam">test</span> <span class="key">import</span> <span class="nam">run_wsgi_app</span> <span class="key">as</span> <span class="nam">_run_wsgi_app</span><span class="strut">&nbsp;</span></p>
-<p id="t59" class="stm run hide_run">    <span class="key">return</span> <span class="nam">_run_wsgi_app</span><span class="op">(</span><span class="op">*</span><span class="nam">args</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t58" class="stm mis">    <span class="key">from</span> <span class="nam">werkzeug</span><span class="op">.</span><span class="nam">test</span> <span class="key">import</span> <span class="nam">run_wsgi_app</span> <span class="key">as</span> <span class="nam">_run_wsgi_app</span><span class="strut">&nbsp;</span></p>
+<p id="t59" class="stm mis">    <span class="key">return</span> <span class="nam">_run_wsgi_app</span><span class="op">(</span><span class="op">*</span><span class="nam">args</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t60" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t61" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t62" class="stm run hide_run"><span class="key">def</span> <span class="nam">_warn_if_string</span><span class="op">(</span><span class="nam">iterable</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
@@ -3014,11 +3014,11 @@
 <p id="t914" class="pln"><span class="str">        :param environ: a WSGI environment object.</span><span class="strut">&nbsp;</span></p>
 <p id="t915" class="pln"><span class="str">        :return: a response object.</span><span class="strut">&nbsp;</span></p>
 <p id="t916" class="pln"><span class="str">        """</span><span class="strut">&nbsp;</span></p>
-<p id="t917" class="stm run hide_run">        <span class="key">if</span> <span class="key">not</span> <span class="nam">isinstance</span><span class="op">(</span><span class="nam">response</span><span class="op">,</span> <span class="nam">BaseResponse</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t918" class="stm run hide_run">            <span class="key">if</span> <span class="nam">environ</span> <span class="key">is</span> <span class="nam">None</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t917" class="stm mis">        <span class="key">if</span> <span class="key">not</span> <span class="nam">isinstance</span><span class="op">(</span><span class="nam">response</span><span class="op">,</span> <span class="nam">BaseResponse</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t918" class="stm mis">            <span class="key">if</span> <span class="nam">environ</span> <span class="key">is</span> <span class="nam">None</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t919" class="stm mis">                <span class="key">raise</span> <span class="nam">TypeError</span><span class="op">(</span><span class="str">'cannot convert WSGI application into '</span><span class="strut">&nbsp;</span></p>
 <p id="t920" class="pln">                                <span class="str">'response objects without an environ'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t921" class="stm run hide_run">            <span class="nam">response</span> <span class="op">=</span> <span class="nam">BaseResponse</span><span class="op">(</span><span class="op">*</span><span class="nam">_run_wsgi_app</span><span class="op">(</span><span class="nam">response</span><span class="op">,</span> <span class="nam">environ</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t921" class="stm mis">            <span class="nam">response</span> <span class="op">=</span> <span class="nam">BaseResponse</span><span class="op">(</span><span class="op">*</span><span class="nam">_run_wsgi_app</span><span class="op">(</span><span class="nam">response</span><span class="op">,</span> <span class="nam">environ</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t922" class="stm mis">        <span class="nam">response</span><span class="op">.</span><span class="nam">__class__</span> <span class="op">=</span> <span class="nam">cls</span><span class="strut">&nbsp;</span></p>
 <p id="t923" class="stm mis">        <span class="key">return</span> <span class="nam">response</span><span class="strut">&nbsp;</span></p>
 <p id="t924" class="pln"><span class="strut">&nbsp;</span></p>
@@ -4136,7 +4136,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2019-01-23 18:01
+            created at 2019-01-24 16:41
         </p>
     </div>
 </div>

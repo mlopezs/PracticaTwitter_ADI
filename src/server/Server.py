@@ -15,6 +15,8 @@ oauth = OAuth()
 pid = 0
 scavenging = False
 
+webhooks = []
+
 # Recogida de tweets
 
 @app.route('/collect', methods=['POST'])
@@ -129,14 +131,13 @@ def addWebhook():
     
     attr = ['endpoint']
     if not request.json or [it for it in attr if not it in request.json]:
-        abort(400)
+        return make_response(jsonify({'error' : 'Bad Request'}), 400)
     endpoint = request.json['endpoint']    
     
     auxWebHook = list(filter(lambda t:t == endpoint, webhooks))
     if len(auxWebHook) > 0:
-        abort(404)
+        return make_response(jsonify({'error' : 'Conflict'}), 409)
     webhooks.append(endpoint)
-    print webhooks
 
     return make_response(jsonify({"created":endpoint}), 201)
 
