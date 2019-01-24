@@ -18,7 +18,10 @@
         remote_src: yes
 
     - name: Export environment variables
-      shell: export HADOOP_HOME=/home/vagrant/hadoop-2.9.1/ && export JAVA_HOME=/usr/lib/jvm//usr/lib/jvm/default-java/ && export PATH=$PATH:$HADOOP_HOME/bin:$JAVA_HOME/bin
+      shell: |
+        echo "export HADOOP_HOME=/home/vagrant/hadoop-2.9.1/" >> .bashrc && 
+        echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/"  >> .bashrc && 
+        echo "export PATH=$PATH:$HADOOP_HOME/bin:$JAVA_HOME/bin"  >> .bashrc
 
     - name: Copy hosts
       copy:
@@ -26,6 +29,9 @@
         dest: /tmp/hosts
     - name: Add hosts
       shell: cat /tmp/hosts >> /etc/hosts
+
+    # - name: SSH
+    #   shell: ssh-keygen && cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.shh/authorized_keys
 
     - name: Delete default route
       shell: ip route del default

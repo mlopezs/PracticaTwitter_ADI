@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "hadoop-master" do |master|
 
-    master.vm.box = "debian/jessie64"
+    master.vm.box = "debian/stretch64"
     master.vm.hostname = "hadoop-master"
 
     #master.ssh.guest_port = 2222
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.define "hadoop-slave#{i}" do |slave|
 
-      slave.vm.box = "debian/jessie64"
+      slave.vm.box = "debian/stretch64"
       slave.vm.hostname = "hadoop-slave#{i}"
 
       #slave.ssh.guest_port = 2222
