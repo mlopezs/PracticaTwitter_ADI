@@ -8,9 +8,9 @@ REGISTER $PIG_HOME/lib/json-simple-1.1.jar
 
 tweets = LOAD '/user/tweets-collect/' USING com.twitter.elephantbird.pig.load.JsonLoader('-nestedLoad') AS (json:map[]);
 
-filtered = FILTER tweets BY json#'retweet_count' > $RTS;
+filtered = FILTER tweets BY json#'retweeted_status'#'retweet_count' > $RTS;
 
-out = FOREACH filtered GENERATE json#'user'#'name' AS name, json#'user'#'screen_name' AS user, json#'tweet' as tweet, json#'retweet_count' as rts, json#'favorite_count' as mgs;
+out = FOREACH filtered GENERATE json#'retweeted_status'#'user'#'name' AS name, json#'retweeted_status'#'user'#'screen_name' AS user, json#'retweeted_status'#'text' as tweet, json#'retweeted_status'#'retweet_count' as rts, json#'retweeted_status'#'favorite_count' as mgs;
 
 STORE out INTO '/user/storage/sol_rts.json' USING JsonStorage();
 

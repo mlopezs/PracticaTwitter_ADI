@@ -29,7 +29,7 @@ def collectTweets():
 
     pid = os.fork()
     if pid is 0:
-        #os.system('utils/start_flume_collect.sh')
+        os.system('utils/start_flume_collect.sh')
         os._exit(0)
         
     return make_response(jsonify({'message' : 'collection is starting'}), 200)
@@ -44,7 +44,7 @@ def stopCollectTweets():
     if not scavenging:
         return make_response(jsonify({'error' : 'Forbiden'}), 403)
         
-    #os.system('utils/stop_flume_collect.sh')
+    os.system('utils/stop_flume_collect.sh')
     pid = 0
     scavenging = False
 
@@ -62,7 +62,6 @@ def listByWordTweets():
     # os.system("pig -f scripts/pig_palabra.pig -p WORD={}".format(request.json['word']))
     os.system("pig -f scripts/pig_palabra.pig -p PIG_HOME=$PIG_HOME -p WORD={}".format(request.json['tweet_word']))
     
-    
     file = open("data/results/sol_palabra.txt", 'r')
     # Hay que saltarse la primera linea para que json.loads funcione, porque la
     # primera linea no esta en formato json
@@ -74,7 +73,9 @@ def listByWordTweets():
         listaTweets.append(json.loads(line))
         line = file.readline()
 
-    make_response(jsonify({'tweets' : listaTweets}), 200)
+    os.system("rm data/results/sol_palabra.txt")
+
+    return make_response(jsonify({'tweets' : listaTweets}), 200)
 
 
 @app.route('/show_likes', methods=['POST'])
@@ -85,11 +86,8 @@ def showByYLikesTweets():
 
     listaTweets = []
 
-    print "Runnin pig"
-
     os.system("pig -f scripts/pig_likes.pig -p PIG_HOME=$PIG_HOME -p LIKES={}".format(request.json['tweet_likes']))
     
-
     file = open("data/results/sol_mgs.txt", 'r')
 
     file.readline() 
@@ -98,6 +96,8 @@ def showByYLikesTweets():
     while line:
         listaTweets.append(json.loads(line))
         line = file.readline()
+
+    os.system("rm data/results/sol_mgs.txt")
 
     return make_response(jsonify({'tweets' : listaTweets}), 200)
 
@@ -111,7 +111,6 @@ def showByRtsTweets():
 
     os.system("pig -f scripts/pig_rts.pig -p PIG_HOME=$PIG_HOME -p RTS={}".format(request.json['tweet_retweets']))
     
-    
     file = open("data/results/sol_rts.txt", 'r')
 
     file.readline() 
@@ -121,7 +120,30 @@ def showByRtsTweets():
         listaTweets.append(json.loads(line))
         line = file.readline()
 
+    os.system("rm data/results/sol_rts.txt")
+
     return make_response(jsonify({'tweets' : listaTweets}), 200)
+
+@app.route('/webhook', methods = ['POST'])
+def addWebhook():
+    
+    attr = ['endpoint']
+    if not request.json or [it for it in attr if not it in request.json]:
+        abort(400)
+    endpoint = request.json['endpoint']    
+    
+    auxWebHook = list(filter(lambda t:t == endpoint, webhooks))
+    if len(auxWebHook) > 0:
+        abort(404)
+    webhooks.append(endpoint)
+    print webhooks
+
+    return make_response(jsonify({"created":endpoint}), 201)
+
+def notify(user, operation):
+    for itWH in webhooks:
+        response=requests.post(itWH, json = {'operation':operation, 'user':user})
+        print(response.status_code)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)

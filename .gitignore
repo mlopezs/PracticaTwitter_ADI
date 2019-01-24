@@ -2,6 +2,7 @@
 *.log
 *.py.swp
 .coverage
+__pycache__
 
 FlumeData.*
 
