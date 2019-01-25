@@ -8,7 +8,7 @@
     
     
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for flask/ctx.py: 75%</title>
+    <title>Coverage for flask/ctx.py: 73%</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -24,15 +24,15 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>flask/ctx.py</b> :
-            <span class="pc_cov">75%</span>
+            <span class="pc_cov">73%</span>
         </h1>
 
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
 
         <h2 class="stats">
             153 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">114 run</span>
-            <span class="mis shortkey_m button_toggle_mis">39 missing</span>
+            <span class="run hide_run shortkey_r button_toggle_run">111 run</span>
+            <span class="mis shortkey_m button_toggle_mis">42 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
             
@@ -419,7 +419,7 @@
 <p id="n350" class="pln"><a href="#n350">350</a></p>
 <p id="n351" class="stm run hide_run"><a href="#n351">351</a></p>
 <p id="n352" class="stm run hide_run"><a href="#n352">352</a></p>
-<p id="n353" class="stm run hide_run"><a href="#n353">353</a></p>
+<p id="n353" class="stm mis"><a href="#n353">353</a></p>
 <p id="n354" class="pln"><a href="#n354">354</a></p>
 <p id="n355" class="pln"><a href="#n355">355</a></p>
 <p id="n356" class="pln"><a href="#n356">356</a></p>
@@ -497,8 +497,8 @@
 <p id="n428" class="stm run hide_run"><a href="#n428">428</a></p>
 <p id="n429" class="stm run hide_run"><a href="#n429">429</a></p>
 <p id="n430" class="pln"><a href="#n430">430</a></p>
-<p id="n431" class="stm run hide_run"><a href="#n431">431</a></p>
-<p id="n432" class="stm run hide_run"><a href="#n432">432</a></p>
+<p id="n431" class="stm mis"><a href="#n431">431</a></p>
+<p id="n432" class="stm mis"><a href="#n432">432</a></p>
 <p id="n433" class="pln"><a href="#n433">433</a></p>
 <p id="n434" class="stm run hide_run"><a href="#n434">434</a></p>
 <p id="n435" class="pln"><a href="#n435">435</a></p>
@@ -879,7 +879,7 @@
 <p id="t350" class="pln">        <span class="com"># functionality is not active in production environments.</span><span class="strut">&nbsp;</span></p>
 <p id="t351" class="stm run hide_run">        <span class="nam">top</span> <span class="op">=</span> <span class="nam">_request_ctx_stack</span><span class="op">.</span><span class="nam">top</span><span class="strut">&nbsp;</span></p>
 <p id="t352" class="stm run hide_run">        <span class="key">if</span> <span class="nam">top</span> <span class="key">is</span> <span class="key">not</span> <span class="nam">None</span> <span class="key">and</span> <span class="nam">top</span><span class="op">.</span><span class="nam">preserved</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t353" class="stm run hide_run">            <span class="nam">top</span><span class="op">.</span><span class="nam">pop</span><span class="op">(</span><span class="nam">top</span><span class="op">.</span><span class="nam">_preserved_exc</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t353" class="stm mis">            <span class="nam">top</span><span class="op">.</span><span class="nam">pop</span><span class="op">(</span><span class="nam">top</span><span class="op">.</span><span class="nam">_preserved_exc</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t354" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t355" class="pln">        <span class="com"># Before we push the request context we have to ensure that there</span><span class="strut">&nbsp;</span></p>
 <p id="t356" class="pln">        <span class="com"># is an application context.</span><span class="strut">&nbsp;</span></p>
@@ -957,8 +957,8 @@
 <p id="t428" class="stm run hide_run">    <span class="key">def</span> <span class="nam">auto_pop</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">exc</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t429" class="stm run hide_run">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">request</span><span class="op">.</span><span class="nam">environ</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">'flask._preserve_context'</span><span class="op">)</span> <span class="key">or</span> <span class="xx">\</span><span class="strut">&nbsp;</span></p>
 <p id="t430" class="pln">           <span class="op">(</span><span class="nam">exc</span> <span class="key">is</span> <span class="key">not</span> <span class="nam">None</span> <span class="key">and</span> <span class="nam">self</span><span class="op">.</span><span class="nam">app</span><span class="op">.</span><span class="nam">preserve_context_on_exception</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t431" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">preserved</span> <span class="op">=</span> <span class="nam">True</span><span class="strut">&nbsp;</span></p>
-<p id="t432" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">_preserved_exc</span> <span class="op">=</span> <span class="nam">exc</span><span class="strut">&nbsp;</span></p>
+<p id="t431" class="stm mis">            <span class="nam">self</span><span class="op">.</span><span class="nam">preserved</span> <span class="op">=</span> <span class="nam">True</span><span class="strut">&nbsp;</span></p>
+<p id="t432" class="stm mis">            <span class="nam">self</span><span class="op">.</span><span class="nam">_preserved_exc</span> <span class="op">=</span> <span class="nam">exc</span><span class="strut">&nbsp;</span></p>
 <p id="t433" class="pln">        <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t434" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">pop</span><span class="op">(</span><span class="nam">exc</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t435" class="pln"><span class="strut">&nbsp;</span></p>
@@ -994,7 +994,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2019-01-24 19:04
+            created at 2019-01-24 20:40
         </p>
     </div>
 </div>

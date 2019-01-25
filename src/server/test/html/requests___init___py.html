@@ -8,7 +8,7 @@
     
     
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for requests/__init__.py: 77%</title>
+    <title>Coverage for requests/__init__.py: 76%</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -24,15 +24,15 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>requests/__init__.py</b> :
-            <span class="pc_cov">77%</span>
+            <span class="pc_cov">76%</span>
         </h1>
 
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
 
         <h2 class="stats">
-            60 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">46 run</span>
-            <span class="mis shortkey_m button_toggle_mis">14 missing</span>
+            55 statements &nbsp;
+            <span class="run hide_run shortkey_r button_toggle_run">42 run</span>
+            <span class="mis shortkey_m button_toggle_mis">13 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
             
@@ -121,7 +121,7 @@
 <p id="n52" class="pln"><a href="#n52">52</a></p>
 <p id="n53" class="pln"><a href="#n53">53</a></p>
 <p id="n54" class="stm run hide_run"><a href="#n54">54</a></p>
-<p id="n55" class="stm run hide_run"><a href="#n55">55</a></p>
+<p id="n55" class="stm mis"><a href="#n55">55</a></p>
 <p id="n56" class="pln"><a href="#n56">56</a></p>
 <p id="n57" class="pln"><a href="#n57">57</a></p>
 <p id="n58" class="stm run hide_run"><a href="#n58">58</a></p>
@@ -193,16 +193,11 @@
 <p id="n124" class="pln"><a href="#n124">124</a></p>
 <p id="n125" class="stm run hide_run"><a href="#n125">125</a></p>
 <p id="n126" class="stm run hide_run"><a href="#n126">126</a></p>
-<p id="n127" class="stm run hide_run"><a href="#n127">127</a></p>
+<p id="n127" class="pln"><a href="#n127">127</a></p>
 <p id="n128" class="stm run hide_run"><a href="#n128">128</a></p>
-<p id="n129" class="stm mis"><a href="#n129">129</a></p>
-<p id="n130" class="stm mis"><a href="#n130">130</a></p>
+<p id="n129" class="pln"><a href="#n129">129</a></p>
+<p id="n130" class="pln"><a href="#n130">130</a></p>
 <p id="n131" class="stm run hide_run"><a href="#n131">131</a></p>
-<p id="n132" class="pln"><a href="#n132">132</a></p>
-<p id="n133" class="stm run hide_run"><a href="#n133">133</a></p>
-<p id="n134" class="pln"><a href="#n134">134</a></p>
-<p id="n135" class="pln"><a href="#n135">135</a></p>
-<p id="n136" class="stm run hide_run"><a href="#n136">136</a></p>
 
             </td>
             <td class="text">
@@ -230,7 +225,7 @@
 <p id="t22" class="pln"><span class="str">... or POST:</span><span class="strut">&nbsp;</span></p>
 <p id="t23" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t24" class="pln"><span class="str">   >>> payload = dict(key1='value1', key2='value2')</span><span class="strut">&nbsp;</span></p>
-<p id="t25" class="pln"><span class="str">   >>> r = requests.post('http://httpbin.org/post', data=payload)</span><span class="strut">&nbsp;</span></p>
+<p id="t25" class="pln"><span class="str">   >>> r = requests.post('https://httpbin.org/post', data=payload)</span><span class="strut">&nbsp;</span></p>
 <p id="t26" class="pln"><span class="str">   >>> print(r.text)</span><span class="strut">&nbsp;</span></p>
 <p id="t27" class="pln"><span class="str">   {</span><span class="strut">&nbsp;</span></p>
 <p id="t28" class="pln"><span class="str">     ...</span><span class="strut">&nbsp;</span></p>
@@ -260,15 +255,15 @@
 <p id="t52" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t53" class="pln">    <span class="com"># Sometimes, urllib3 only reports its version as 16.1.</span><span class="strut">&nbsp;</span></p>
 <p id="t54" class="stm run hide_run">    <span class="key">if</span> <span class="nam">len</span><span class="op">(</span><span class="nam">urllib3_version</span><span class="op">)</span> <span class="op">==</span> <span class="num">2</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t55" class="stm run hide_run">        <span class="nam">urllib3_version</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="str">'0'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t55" class="stm mis">        <span class="nam">urllib3_version</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="str">'0'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t56" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t57" class="pln">    <span class="com"># Check urllib3 for compatibility.</span><span class="strut">&nbsp;</span></p>
 <p id="t58" class="stm run hide_run">    <span class="nam">major</span><span class="op">,</span> <span class="nam">minor</span><span class="op">,</span> <span class="nam">patch</span> <span class="op">=</span> <span class="nam">urllib3_version</span>  <span class="com"># noqa: F811</span><span class="strut">&nbsp;</span></p>
 <p id="t59" class="stm run hide_run">    <span class="nam">major</span><span class="op">,</span> <span class="nam">minor</span><span class="op">,</span> <span class="nam">patch</span> <span class="op">=</span> <span class="nam">int</span><span class="op">(</span><span class="nam">major</span><span class="op">)</span><span class="op">,</span> <span class="nam">int</span><span class="op">(</span><span class="nam">minor</span><span class="op">)</span><span class="op">,</span> <span class="nam">int</span><span class="op">(</span><span class="nam">patch</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t60" class="pln">    <span class="com"># urllib3 >= 1.21.1, &lt;= 1.23</span><span class="strut">&nbsp;</span></p>
+<p id="t60" class="pln">    <span class="com"># urllib3 >= 1.21.1, &lt;= 1.24</span><span class="strut">&nbsp;</span></p>
 <p id="t61" class="stm run hide_run">    <span class="key">assert</span> <span class="nam">major</span> <span class="op">==</span> <span class="num">1</span><span class="strut">&nbsp;</span></p>
 <p id="t62" class="stm run hide_run">    <span class="key">assert</span> <span class="nam">minor</span> <span class="op">>=</span> <span class="num">21</span><span class="strut">&nbsp;</span></p>
-<p id="t63" class="stm run hide_run">    <span class="key">assert</span> <span class="nam">minor</span> <span class="op">&lt;=</span> <span class="num">23</span><span class="strut">&nbsp;</span></p>
+<p id="t63" class="stm run hide_run">    <span class="key">assert</span> <span class="nam">minor</span> <span class="op">&lt;=</span> <span class="num">24</span><span class="strut">&nbsp;</span></p>
 <p id="t64" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t65" class="pln">    <span class="com"># Check chardet for compatibility.</span><span class="strut">&nbsp;</span></p>
 <p id="t66" class="stm run hide_run">    <span class="nam">major</span><span class="op">,</span> <span class="nam">minor</span><span class="op">,</span> <span class="nam">patch</span> <span class="op">=</span> <span class="nam">chardet_version</span><span class="op">.</span><span class="nam">split</span><span class="op">(</span><span class="str">'.'</span><span class="op">)</span><span class="op">[</span><span class="op">:</span><span class="num">3</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
@@ -287,14 +282,14 @@
 <p id="t79" class="stm mis">        <span class="key">return</span><span class="strut">&nbsp;</span></p>
 <p id="t80" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t81" class="stm mis">    <span class="key">if</span> <span class="nam">cryptography_version</span> <span class="op">&lt;</span> <span class="op">[</span><span class="num">1</span><span class="op">,</span> <span class="num">3</span><span class="op">,</span> <span class="num">4</span><span class="op">]</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t82" class="stm mis">        <span class="nam">warning</span> <span class="op">=</span> <span class="str">'Old version of cryptography ({0}) may cause slowdown.'</span><span class="op">.</span><span class="nam">format</span><span class="op">(</span><span class="nam">cryptography_version</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t82" class="stm mis">        <span class="nam">warning</span> <span class="op">=</span> <span class="str">'Old version of cryptography ({}) may cause slowdown.'</span><span class="op">.</span><span class="nam">format</span><span class="op">(</span><span class="nam">cryptography_version</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t83" class="stm mis">        <span class="nam">warnings</span><span class="op">.</span><span class="nam">warn</span><span class="op">(</span><span class="nam">warning</span><span class="op">,</span> <span class="nam">RequestsDependencyWarning</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t84" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t85" class="pln"><span class="com"># Check imported dependencies for compatibility.</span><span class="strut">&nbsp;</span></p>
 <p id="t86" class="stm run hide_run"><span class="key">try</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t87" class="stm run hide_run">    <span class="nam">check_compatibility</span><span class="op">(</span><span class="nam">urllib3</span><span class="op">.</span><span class="nam">__version__</span><span class="op">,</span> <span class="nam">chardet</span><span class="op">.</span><span class="nam">__version__</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t88" class="stm mis"><span class="key">except</span> <span class="op">(</span><span class="nam">AssertionError</span><span class="op">,</span> <span class="nam">ValueError</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t89" class="stm mis">    <span class="nam">warnings</span><span class="op">.</span><span class="nam">warn</span><span class="op">(</span><span class="str">"urllib3 ({0}) or chardet ({1}) doesn't match a supported "</span><span class="strut">&nbsp;</span></p>
+<p id="t89" class="stm mis">    <span class="nam">warnings</span><span class="op">.</span><span class="nam">warn</span><span class="op">(</span><span class="str">"urllib3 ({}) or chardet ({}) doesn't match a supported "</span><span class="strut">&nbsp;</span></p>
 <p id="t90" class="pln">                  <span class="str">"version!"</span><span class="op">.</span><span class="nam">format</span><span class="op">(</span><span class="nam">urllib3</span><span class="op">.</span><span class="nam">__version__</span><span class="op">,</span> <span class="nam">chardet</span><span class="op">.</span><span class="nam">__version__</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t91" class="pln">                  <span class="nam">RequestsDependencyWarning</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t92" class="pln"><span class="strut">&nbsp;</span></p>
@@ -331,17 +326,12 @@
 <p id="t123" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t124" class="pln"><span class="com"># Set default logging handler to avoid "No handler found" warnings.</span><span class="strut">&nbsp;</span></p>
 <p id="t125" class="stm run hide_run"><span class="key">import</span> <span class="nam">logging</span><span class="strut">&nbsp;</span></p>
-<p id="t126" class="stm run hide_run"><span class="key">try</span><span class="op">:</span>  <span class="com"># Python 2.7+</span><span class="strut">&nbsp;</span></p>
-<p id="t127" class="stm run hide_run">    <span class="key">from</span> <span class="nam">logging</span> <span class="key">import</span> <span class="nam">NullHandler</span><span class="strut">&nbsp;</span></p>
-<p id="t128" class="stm run hide_run"><span class="key">except</span> <span class="nam">ImportError</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t129" class="stm mis">    <span class="key">class</span> <span class="nam">NullHandler</span><span class="op">(</span><span class="nam">logging</span><span class="op">.</span><span class="nam">Handler</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t130" class="stm mis">        <span class="key">def</span> <span class="nam">emit</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">record</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t131" class="stm run hide_run">            <span class="key">pass</span><span class="strut">&nbsp;</span></p>
-<p id="t132" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t133" class="stm run hide_run"><span class="nam">logging</span><span class="op">.</span><span class="nam">getLogger</span><span class="op">(</span><span class="nam">__name__</span><span class="op">)</span><span class="op">.</span><span class="nam">addHandler</span><span class="op">(</span><span class="nam">NullHandler</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t134" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t135" class="pln"><span class="com"># FileModeWarnings go off per the default.</span><span class="strut">&nbsp;</span></p>
-<p id="t136" class="stm run hide_run"><span class="nam">warnings</span><span class="op">.</span><span class="nam">simplefilter</span><span class="op">(</span><span class="str">'default'</span><span class="op">,</span> <span class="nam">FileModeWarning</span><span class="op">,</span> <span class="nam">append</span><span class="op">=</span><span class="nam">True</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t126" class="stm run hide_run"><span class="key">from</span> <span class="nam">logging</span> <span class="key">import</span> <span class="nam">NullHandler</span><span class="strut">&nbsp;</span></p>
+<p id="t127" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t128" class="stm run hide_run"><span class="nam">logging</span><span class="op">.</span><span class="nam">getLogger</span><span class="op">(</span><span class="nam">__name__</span><span class="op">)</span><span class="op">.</span><span class="nam">addHandler</span><span class="op">(</span><span class="nam">NullHandler</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t129" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t130" class="pln"><span class="com"># FileModeWarnings go off per the default.</span><span class="strut">&nbsp;</span></p>
+<p id="t131" class="stm run hide_run"><span class="nam">warnings</span><span class="op">.</span><span class="nam">simplefilter</span><span class="op">(</span><span class="str">'default'</span><span class="op">,</span> <span class="nam">FileModeWarning</span><span class="op">,</span> <span class="nam">append</span><span class="op">=</span><span class="nam">True</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 
             </td>
         </tr>
@@ -352,7 +342,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2019-01-24 19:04
+            created at 2019-01-24 20:40
         </p>
     </div>
 </div>

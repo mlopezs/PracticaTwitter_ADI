@@ -15,9 +15,7 @@ oauth = OAuth()
 pid = 0
 scavenging = False
 
-user = 'Default'
-
-webhooks = []
+webhooks = ['https://practicaadi-logger.appspot.com/activity']
 
 # Recogida de tweets
 
@@ -26,7 +24,7 @@ def collectTweets():
     global pid
     global scavenging
 
-    notify(user, 'collect')
+    notify('collect')
 
     if scavenging:
         return make_response(jsonify({'error' : 'Forbidden'}), 403)
@@ -35,7 +33,7 @@ def collectTweets():
 
     pid = os.fork()
     if pid is 0:
-        #os.system('utils/start_flume_collect.sh')
+        os.system('utils/start_flume_collect.sh')
         os._exit(0)
         
     return make_response(jsonify({'message' : 'collection is starting'}), 200)
@@ -47,7 +45,7 @@ def stopCollectTweets():
     global pid
     global scavenging
 
-    notify(user, 'stop_collect')
+    notify('stop_collect')
 
     if not scavenging:
         return make_response(jsonify({'error' : 'Forbiden'}), 403)
@@ -61,7 +59,7 @@ def stopCollectTweets():
 @app.route('/list_word', methods=['POST'])
 def listByWordTweets():
 
-    notify(user, 'filter_by_word')
+    notify('filter_by_word')
 
     if not request.json or not 'tweet_word' in request.json:
         return make_response(jsonify({'error' : 'Bad Request'}), 400)
@@ -87,7 +85,7 @@ def listByWordTweets():
 @app.route('/show_likes', methods=['POST'])
 def showByYLikesTweets():
 
-    notify(user, 'filter_by_likes')
+    notify('filter_by_likes')
 
     if not request.json or not 'tweet_likes' in request.json:
         return make_response(jsonify({'error' : 'Bad Request'}), 400)
@@ -112,7 +110,7 @@ def showByYLikesTweets():
 @app.route('/show_rts', methods=['POST'])
 def showByRtsTweets():
 
-    notify(user, 'filter_by_rt')
+    notify('filter_by_rt')
 
     if not request.json or not 'tweet_retweets' in request.json:
         return make_response(jsonify({'error' : 'Bad Request'}), 400)
@@ -149,9 +147,9 @@ def addWebhook():
 
     return make_response(jsonify({"created":endpoint}), 201)
 
-def notify(user, operation):
+def notify(operation):
     for itWH in webhooks:
-        response=requests.post(itWH, json = {'operation':operation, 'user':user})
+        response=requests.post(itWH, json = {'operation':operation})
         print response.status_code
 
 if __name__ == '__main__':

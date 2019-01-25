@@ -121,14 +121,14 @@
 <p id="t15" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t16" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t17" class="stm run hide_run"><span class="key">def</span> <span class="nam">default_hooks</span><span class="op">(</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t18" class="stm run hide_run">    <span class="key">return</span> <span class="nam">dict</span><span class="op">(</span><span class="op">(</span><span class="nam">event</span><span class="op">,</span> <span class="op">[</span><span class="op">]</span><span class="op">)</span> <span class="key">for</span> <span class="nam">event</span> <span class="key">in</span> <span class="nam">HOOKS</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t18" class="stm run hide_run">    <span class="key">return</span> <span class="op">{</span><span class="nam">event</span><span class="op">:</span> <span class="op">[</span><span class="op">]</span> <span class="key">for</span> <span class="nam">event</span> <span class="key">in</span> <span class="nam">HOOKS</span><span class="op">}</span><span class="strut">&nbsp;</span></p>
 <p id="t19" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t20" class="pln"><span class="com"># TODO: response is the only one</span><span class="strut">&nbsp;</span></p>
 <p id="t21" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t22" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t23" class="stm run hide_run"><span class="key">def</span> <span class="nam">dispatch_hook</span><span class="op">(</span><span class="nam">key</span><span class="op">,</span> <span class="nam">hooks</span><span class="op">,</span> <span class="nam">hook_data</span><span class="op">,</span> <span class="op">**</span><span class="nam">kwargs</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t24" class="pln">    <span class="str">"""Dispatches a hook dictionary on a given piece of data."""</span><span class="strut">&nbsp;</span></p>
-<p id="t25" class="stm run hide_run">    <span class="nam">hooks</span> <span class="op">=</span> <span class="nam">hooks</span> <span class="key">or</span> <span class="nam">dict</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t25" class="stm run hide_run">    <span class="nam">hooks</span> <span class="op">=</span> <span class="nam">hooks</span> <span class="key">or</span> <span class="op">{</span><span class="op">}</span><span class="strut">&nbsp;</span></p>
 <p id="t26" class="stm run hide_run">    <span class="nam">hooks</span> <span class="op">=</span> <span class="nam">hooks</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="nam">key</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t27" class="stm run hide_run">    <span class="key">if</span> <span class="nam">hooks</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t28" class="stm mis">        <span class="key">if</span> <span class="nam">hasattr</span><span class="op">(</span><span class="nam">hooks</span><span class="op">,</span> <span class="str">'__call__'</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
@@ -148,7 +148,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2019-01-24 19:06
+            created at 2019-01-24 20:40
         </p>
     </div>
 </div>
