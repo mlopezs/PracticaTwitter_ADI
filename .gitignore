@@ -10,3 +10,4 @@ lib/
 FlumeData.*
 
 .vscode/*
+src/server/test/html/*
